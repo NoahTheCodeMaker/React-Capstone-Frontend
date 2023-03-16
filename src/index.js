@@ -7,6 +7,7 @@ import { Auth0Provider } from "@auth0/auth0-react";
 import Profile from './modules/profile';
 import LoginButton from './modules/loginbutton';
 import LogoutButton from './modules/logoutbutton';
+import TestAuth from './modules/tokens';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -24,6 +25,7 @@ root.render(
       <LoginButton/>
       <Profile/>
       <LogoutButton/>
+      <TestAuth address="http://127.0.0.1:5000/actors" buttonText="Test Actor Endpoint"/>
     </Auth0Provider>
   </StrictMode>
 )
