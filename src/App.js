@@ -9,11 +9,12 @@ function App() {
   return (
     <div>
       <div>
-        <h1 className="entry">This is Noah's grand Capstone Frontend!</h1>
+        <h1 className="entry">This Is My Capstone Frontend!</h1>
       </div>
       <LoginButton/>
       <Profile/>
       <LogoutButton/>
+      <br/>
       <APICall address="http://127.0.0.1:5000/actors" buttonText="Test Actor Endpoint"/>
     </div>
   );
