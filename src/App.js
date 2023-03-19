@@ -1,4 +1,5 @@
 import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import Profile from './modules/profile';
 import LoginButton from './modules/loginbutton';
 import LogoutButton from './modules/logoutbutton';
@@ -8,7 +9,7 @@ function App() {
   return (
     <div>
       <div>
-        <h1 className="centered">This is Noah's grand Capstone Frontend!</h1>
+        <h1 className="entry">This is Noah's grand Capstone Frontend!</h1>
       </div>
       <LoginButton/>
       <Profile/>
