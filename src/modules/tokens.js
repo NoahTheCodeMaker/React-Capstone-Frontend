@@ -1,4 +1,5 @@
 import { useAuth0 } from '@auth0/auth0-react';
+import { Button } from 'react-bootstrap';
 import axios from 'axios';
 
 const APICall = (props) => {
@@ -23,7 +24,7 @@ const APICall = (props) => {
   };
 
   return (
-    <button onClick={callApi}>{props.buttonText}</button>
+    <Button onClick={callApi}>{props.buttonText}</Button>
   );
 };
 
