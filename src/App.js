@@ -4,13 +4,13 @@ import Profile from './modules/profile';
 import LoginButton from './modules/loginbutton';
 import LogoutButton from './modules/logoutbutton';
 import APICall from './modules/tokens';
+import MyNavbar from './modules/navbar';
 
 function App() {
   return (
     <div>
-      <div>
-        <h1 className="entry">This Is My Capstone Frontend!</h1>
-      </div>
+      <MyNavbar/>
+      <br/>
       <LoginButton/>
       <Profile/>
       <LogoutButton/>
