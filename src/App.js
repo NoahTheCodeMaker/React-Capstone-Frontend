@@ -15,7 +15,7 @@ function App() {
       <Profile/>
       <LogoutButton/>
       <br/>
-      <APICall address="http://127.0.0.1:5000/actors" buttonText="Test Actor Endpoint"/>
+      <APICall address="/actors" buttonText="Test Actor Endpoint"/>
     </div>
   );
 }
