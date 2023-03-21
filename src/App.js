@@ -15,7 +15,15 @@ function App() {
       <Profile/>
       <LogoutButton/>
       <br/>
-      <APICall address="/actors" buttonText="Test Actor Endpoint"/>
+      <APICall address="/" buttonText="Test Welcome Endpoint"/>
+      <br/>
+      <APICall address="/login" buttonText="Test API Login Endpoint"/>
+      <br/>
+      <APICall address="/auth" buttonText="Test Auth Endpoint"/>
+      <br/>
+      <APICall address="/actors" buttonText="Test Actors Endpoint"/>
+      <br/>
+      <APICall address="/movies" buttonText="Test Movies Endpoint"/>
     </div>
   );
 }

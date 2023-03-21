@@ -10,7 +10,7 @@ const APICall = (props) => {
       const accessToken = await getAccessTokenSilently({
         audience: 'https://NoahCapstone'
       });
-      const response = await axios.get(`http://127.0.0.1:5000/${props.address}`, {
+      const response = await axios.get(`http://127.0.0.1:5000${props.address}`, {
         headers: {
           Authorization: `Bearer ${accessToken}`,
         }
