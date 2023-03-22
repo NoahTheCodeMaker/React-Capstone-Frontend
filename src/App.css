@@ -1,6 +1,5 @@
 .entry {
     text-align: center;
-    background-color: #19A7CE;
     margin-top: 0;
     padding-top: 20px;
     padding-bottom: 20px;
@@ -8,4 +7,8 @@
 
 body {
     background-color: #F6F1F1;
+}
+
+.top-spacer {
+    margin-top: 80px;
 }

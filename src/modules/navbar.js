@@ -11,7 +11,7 @@ function MyNavbar() {
           <Nav className="ms-auto">
             <Nav.Link href="/movies">Movies</Nav.Link>
             <Nav.Link href="/actors">Actors</Nav.Link>
-            <Nav.Link href="/profile">Profile</Nav.Link>
+            <Nav.Link href="/account">Account</Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Container>
