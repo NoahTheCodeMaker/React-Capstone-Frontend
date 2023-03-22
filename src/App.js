@@ -1,29 +1,24 @@
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Profile from './modules/profile';
-import LoginButton from './modules/loginbutton';
-import LogoutButton from './modules/logoutbutton';
-import APICall from './modules/tokens';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import MyNavbar from './modules/navbar';
+import HomePage from './pages/home';
+import Actors from './pages/actors';
+import Movies from './pages/movies';
+import Account from './pages/account';
 
 function App() {
   return (
     <div>
       <MyNavbar/>
-      <br/>
-      <LoginButton/>
-      <Profile/>
-      <LogoutButton/>
-      <br/>
-      <APICall address="/" buttonText="Test Welcome Endpoint"/>
-      <br/>
-      <APICall address="/login" buttonText="Test API Login Endpoint"/>
-      <br/>
-      <APICall address="/auth" buttonText="Test Auth Endpoint"/>
-      <br/>
-      <APICall address="/actors" buttonText="Test Actors Endpoint"/>
-      <br/>
-      <APICall address="/movies" buttonText="Test Movies Endpoint"/>
+      <Router>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/actors" element={<Actors />} />
+          <Route path="/movies" element={<Movies />} />
+          <Route path="/account" element={<Account />} /> 
+        </Routes>
+      </Router>
     </div>
   );
 }
