@@ -11,7 +11,7 @@ function Actors() {
                 <div style={{ height: '300px', backgroundColor: 'green' }}>Create</div>
             </Col>
             <Col md={6}>
-                <div style={{ height: '300px', backgroundColor: 'gray' }}>
+                <div style={{ height: '300px', backgroundColor: '#F6F1F1' }}>
                     <APICall address="/actors" buttonText='Get Actors'/>
                 </div>
             </Col>
