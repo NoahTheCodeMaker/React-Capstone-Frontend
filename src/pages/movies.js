@@ -1,5 +1,6 @@
 import React from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
+import APICall from '../modules/tokens';
 
 function Movies() {
   return (
@@ -10,7 +11,9 @@ function Movies() {
                 <div style={{ height: '300px', backgroundColor: 'green' }}>Create</div>
             </Col>
             <Col md={6}>
-                <div style={{ height: '300px', backgroundColor: 'yellow' }}>Read</div>
+                <div style={{ height: '300px', backgroundColor: '#F6F1F1' }}>
+                    <APICall address="/movies" buttonText='Get Movies'/>
+                </div>
             </Col>
         </Row>
         <Row>

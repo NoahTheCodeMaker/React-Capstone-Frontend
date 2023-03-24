@@ -3,9 +3,34 @@ import { useAuth0 } from '@auth0/auth0-react';
 import { Button, Container, ListGroup } from 'react-bootstrap';
 import axios from 'axios';
 
+const ActorList = ({ actors }) => (
+  <Container>
+    <ListGroup>
+      {actors.map(actor => (
+        <ListGroup.Item key={actor.id}>
+          {actor.name}, {actor.age}, {actor.gender}
+        </ListGroup.Item>
+      ))}
+    </ListGroup>
+  </Container>
+);
+
+const MovieList = ({ movies }) => (
+  <Container>
+    <ListGroup>
+      {movies.map(movie => (
+        <ListGroup.Item key={movie.id}>
+          {movie.title}, {movie.release_date}
+        </ListGroup.Item>
+      ))}
+    </ListGroup>
+  </Container>
+);
+
 const APICall = (props) => {
   const { getAccessTokenSilently } = useAuth0();
   const [actors, setActors] = useState([]);
+  const [movies, setMovies] = useState([]);
 
   const callApi = async () => {
     try {
@@ -17,8 +42,12 @@ const APICall = (props) => {
           Authorization: `Bearer ${accessToken}`,
         }
       });
-
-      setActors(response.data.actors);
+      if(props.address === '/actors'){
+        setActors(response.data.actors);
+      }
+      else if(props.address === '/movies'){
+        setMovies(response.data.movies);
+      }
     } catch (error) {
       alert("You are not logged in!")
       console.error(error);
@@ -28,13 +57,8 @@ const APICall = (props) => {
   return (
     <Container>
       <Button onClick={callApi}>{props.buttonText}</Button>
-      <ListGroup>
-          {actors.map(actor => (
-            <ListGroup.Item key={actor.id}>
-              {actor.name}, {actor.age}, {actor.gender}
-            </ListGroup.Item>
-          ))}
-      </ListGroup>
+      {props.address === '/actors' && <ActorList actors={actors} />}
+      {props.address === '/movies' && <MovieList movies={movies} />}
     </Container>
   );
 };
