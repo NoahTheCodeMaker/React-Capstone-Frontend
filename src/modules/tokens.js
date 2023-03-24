@@ -1,9 +1,11 @@
+import React, { useState } from 'react';
 import { useAuth0 } from '@auth0/auth0-react';
-import { Button } from 'react-bootstrap';
+import { Button, Container, ListGroup } from 'react-bootstrap';
 import axios from 'axios';
 
 const APICall = (props) => {
   const { getAccessTokenSilently } = useAuth0();
+  const [actors, setActors] = useState([]);
 
   const callApi = async () => {
     try {
@@ -16,7 +18,7 @@ const APICall = (props) => {
         }
       });
 
-      console.log(response.data);
+      setActors(response.data.actors);
     } catch (error) {
       alert("You are not logged in!")
       console.error(error);
@@ -24,7 +26,16 @@ const APICall = (props) => {
   };
 
   return (
-    <Button onClick={callApi}>{props.buttonText}</Button>
+    <Container>
+      <Button onClick={callApi}>{props.buttonText}</Button>
+      <ListGroup>
+          {actors.map(actor => (
+            <ListGroup.Item key={actor.id}>
+              {actor.name}, {actor.age}, {actor.gender}
+            </ListGroup.Item>
+          ))}
+      </ListGroup>
+    </Container>
   );
 };
 
