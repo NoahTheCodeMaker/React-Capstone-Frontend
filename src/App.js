@@ -8,6 +8,8 @@ import Movies from './pages/movies';
 import Account from './pages/account';
 import EditMovie from './pages/editmovie';
 import EditActor from './pages/editactor';
+import CreateActor from './pages/creatactor';
+import CreateMovie from './pages/createmovie';
 
 function App() {
   return (
@@ -19,8 +21,10 @@ function App() {
           <Route path="/actors" element={<Actors />} />
           <Route path="/movies" element={<Movies />} />
           <Route path="/account" element={<Account />} /> 
-          <Route path="/movies/edit/:id" element={<EditMovie/>}/>
           <Route path="/actors/edit/:id" element={<EditActor/>}/>
+          <Route path="/movies/edit/:id" element={<EditMovie/>}/>
+          <Route path="/actors/create" element={<CreateActor/>}/>
+          <Route path="/movies/create" element={<CreateMovie/>}/>
         </Routes>
       </Router>
     </div>
