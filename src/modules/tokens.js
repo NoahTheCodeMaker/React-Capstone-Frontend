@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useAuth0 } from '@auth0/auth0-react';
-import { Container, ListGroup, Spinner } from 'react-bootstrap';
+import { Container, ListGroup, Spinner, Row, Col, Button } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 const APICall = (props) => {
@@ -8,6 +9,15 @@ const APICall = (props) => {
   const [actors, setActors] = useState([]);
   const [movies, setMovies] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const navigate = useNavigate();
+
+  const MovieEditor = (id) => {
+    navigate(`/movies/edit/${id}`);
+  }
+
+  const ActorEditor = (id) => {
+    navigate(`/actors/edit/${id}`);
+  }
 
   useEffect(() => {
     const callApi = async () => {
@@ -37,8 +47,8 @@ const APICall = (props) => {
   if (isLoading) {
     return (
       <Container>
-        <span className="sr-only">Loading...</span>
         <Spinner animation="border" role="status"/>
+        <span className="sr-only"> Loading...</span>
       </Container>
     );
   }
@@ -48,12 +58,28 @@ const APICall = (props) => {
       <ListGroup>
         {props.address === '/actors' && actors.map(actor => (
           <ListGroup.Item key={actor.id}>
-            {actor.name}, {actor.age}, {actor.gender}
+            <Row className="justify-content-between">
+              <Col>
+                {actor.name}, {actor.age}, {actor.gender}
+              </Col>
+              <Col className="col-auto">
+                <Button variant="warning" className="mr-2" onClick={() => ActorEditor(actor.id)}>Edit</Button>
+                <Button variant="danger" style={{marginLeft: "5px"}}>Delete</Button>
+              </Col>
+            </Row>
           </ListGroup.Item>
         ))}
         {props.address === '/movies' && movies.map(movie => (
           <ListGroup.Item key={movie.id}>
-            {movie.title}, {movie.release_date}
+            <Row className="justify-content-between">
+              <Col>
+                {movie.title}, {movie.release_date}
+              </Col>
+              <Col className="col-auto">
+                <Button variant="warning" className="mr-2" onClick={() => MovieEditor(movie.id)}>Edit</Button>
+                <Button variant="danger" style={{marginLeft: "5px"}}>Delete</Button>
+              </Col>
+            </Row>
           </ListGroup.Item>
         ))}
       </ListGroup>
