@@ -5,7 +5,7 @@ import { Button } from 'react-bootstrap';
 const LoginButton = () => {
   const { loginWithRedirect } = useAuth0();
 
-  return <Button variant="success" onClick={() => loginWithRedirect()}>Log In</Button>;
+  return <Button variant="success" style={{marginRight: "5px"}} onClick={() => loginWithRedirect()}>Log In</Button>;
 };
 
 export default LoginButton;
