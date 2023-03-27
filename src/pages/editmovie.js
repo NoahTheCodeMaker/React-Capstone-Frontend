@@ -65,7 +65,7 @@ function CreateMovie() {
 
   return (
     <Container>
-        <h1 className='top-spacer'>Create Movie</h1>
+        <h1 className='top-spacer'>Edit Movie</h1>
         <div style={{ height: '300px', backgroundColor: '#F6F1F1' }}>
             <Form onSubmit={handleSubmit}>
               <Form.Group controlId="formTitle">
