@@ -19,6 +19,29 @@ const APICall = (props) => {
     navigate(`/actors/edit/${id}`);
   }
 
+  const DeleteItem = async (id, warning) => {
+    const confirmed = window.confirm(`Are you sure you want to delete ${warning} with ID ${id}?`);
+    if (!confirmed) {
+        return;
+    }
+    
+    try {
+      const accessToken = await getAccessTokenSilently({
+        audience: 'https://NoahCapstone'
+      });
+      const response = await axios.delete(`http://127.0.0.1:5000${props.address}?id=${id}`, {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        }
+      });
+      console.log(response);
+    } catch (error) {
+      alert("You do not have pernissions to delete this");
+      console.error(error);
+    }
+  }
+
+
   useEffect(() => {
     const callApi = async () => {
       try {
@@ -63,8 +86,8 @@ const APICall = (props) => {
                 {actor.name}, {actor.age}, {actor.gender}
               </Col>
               <Col className="col-auto">
-                <Button variant="warning" className="mr-2" onClick={() => ActorEditor(actor.id)}>Edit</Button>
-                <Button variant="danger" style={{marginLeft: "5px"}}>Delete</Button>
+                <Button variant="primary" className="mr-2" onClick={() => ActorEditor(actor.id)}>Edit</Button>
+                <Button variant="danger" style={{marginLeft: "5px"}} onClick={() => DeleteItem(actor.id, actor.name)}>Delete</Button>
               </Col>
             </Row>
           </ListGroup.Item>
@@ -76,8 +99,8 @@ const APICall = (props) => {
                 {movie.title}, {movie.release_date}
               </Col>
               <Col className="col-auto">
-                <Button variant="warning" className="mr-2" onClick={() => MovieEditor(movie.id)}>Edit</Button>
-                <Button variant="danger" style={{marginLeft: "5px"}}>Delete</Button>
+                <Button variant="primary" className="mr-2" onClick={() => MovieEditor(movie.id)}>Edit</Button>
+                <Button variant="danger" style={{marginLeft: "5px"}} onClick={() => DeleteItem(movie.id, movie.title)}>Delete</Button>
               </Col>
             </Row>
           </ListGroup.Item>
