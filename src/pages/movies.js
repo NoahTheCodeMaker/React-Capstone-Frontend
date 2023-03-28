@@ -16,7 +16,7 @@ function Movies() {
         <div className="d-flex justify-content-end mb-3">
           <Button variant="success" onClick={handleCreateMovie}>Create Movie</Button>
         </div>
-        <div style={{ height: '300px', backgroundColor: '#F6F1F1' }}>
+        <div style={{ height: '300px'}}>
             <APICall address="/movies"/>
         </div>
     </Container>

@@ -16,7 +16,7 @@ function Actors() {
         <div className="d-flex justify-content-end mb-3">
           <Button variant="success" onClick={handleCreateActor}>Create Actor</Button>
         </div>
-        <div style={{ height: '300px', backgroundColor: '#F6F1F1' }}>
+        <div style={{ height: '300px'}}>
             <APICall address="/actors"/>
         </div>
     </Container>
