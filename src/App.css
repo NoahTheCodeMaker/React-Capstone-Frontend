@@ -12,3 +12,25 @@ body {
 .top-spacer {
     margin-top: 80px;
 }
+
+.account-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.profile-info {
+  margin-bottom: 1em;
+}
+
+.logout-button {
+  margin-top: 1em;
+}
+
+.not-logged-in {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}

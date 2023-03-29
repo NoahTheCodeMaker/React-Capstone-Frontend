@@ -5,32 +5,48 @@ import LoginButton from "../modules/loginbutton";
 import LogoutButton from "../modules/logoutbutton";
 
 const Profile = () => {
-  const { user, isAuthenticated, isLoading } = useAuth0();
+  const { user, isLoading } = useAuth0();
 
   if (isLoading) {
     return <div>Loading ...</div>;
-  }
+  } 
 
   return (
-    isAuthenticated && (
-      <div>
-        <img src={user.picture} alt={user.name} />
-        <h2>{user.name}</h2>
-        <p>{user.email}</p>
+    <div className="profile-container justify-content-center align-items-center">
+      <h4 style={{textAlign: "center"}}>You are logged in as:</h4>
+      <div style={{marginTop: "30px"}}>
+        <img src={user.picture} alt={user.name} style={{ display: 'block', margin: 'auto' }} />
       </div>
-    )
-  );
+      <h2 style={{textAlign: "center"}}>{user.name}</h2>
+      <p style={{textAlign: "center"}}>{user.email}</p>
+    </div>
+  )
 };
 
 function Account() {
+  const { isAuthenticated } = useAuth0();
+  
+  if (isAuthenticated) {
     return (
-    <Container className="d-flex justify-content-center align-items-center top-spacer">
-        <LoginButton/>
-        <Profile className="justify-content-center align-items-center"/>
-        <LogoutButton/>
-    </Container>
+      <Container className="account-container top-spacer">
+        <div className="profile-info">
+          <Profile />
+        </div>
+        <div className="logout-button">
+          <LogoutButton />
+        </div>
+      </Container>
     );
+  } else {
+    return (
+      <Container className="account-container top-spacer">
+        <div className="not-logged-in">
+          <h4 style={{textAlign: "center"}}>You are not logged in.</h4>
+          <LoginButton/>
+        </div>
+      </Container>
+    );
+  }
 };
-
 
 export default Account;
