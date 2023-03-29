@@ -61,6 +61,7 @@ const APICall = (props) => {
         setIsLoading(false);
       } catch (error) {
         alert("You are not logged in!")
+        setIsLoading(false);
         console.error(error);
       }
     };
@@ -71,7 +72,7 @@ const APICall = (props) => {
     return (
       <Container>
         <Spinner animation="border" role="status"/>
-        <span className="sr-only"> Loading...</span>
+        <span className="sr-only" style={{marginLeft: "15px"}}>Loading...</span>
       </Container>
     );
   }
