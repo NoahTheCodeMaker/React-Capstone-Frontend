@@ -32,6 +32,7 @@ function CreateActor() {
       console.log(response);
       navigate('/actors');
     } catch (error) {
+      alert("You do not have pernissions to add actors");
       console.error(error);
     }
   };

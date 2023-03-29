@@ -35,6 +35,7 @@ function CreateMovie() {
       console.log(response);
       navigate('/movies');
     } catch (error) {
+      alert("You do not have pernissions to create movies");
       console.error(error);
     }
   };
