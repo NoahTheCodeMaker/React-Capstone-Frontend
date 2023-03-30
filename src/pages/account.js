@@ -1,15 +1,11 @@
 import React from "react";
 import { useAuth0 } from "@auth0/auth0-react";
-import { Container } from "react-bootstrap";
+import { Container, Spinner } from "react-bootstrap";
 import LoginButton from "../modules/loginbutton";
 import LogoutButton from "../modules/logoutbutton";
 
 const Profile = () => {
-  const { user, isLoading } = useAuth0();
-
-  if (isLoading) {
-    return <div>Loading ...</div>;
-  } 
+  const { user } = useAuth0();
 
   return (
     <div className="profile-container justify-content-center align-items-center">
@@ -24,9 +20,16 @@ const Profile = () => {
 };
 
 function Account() {
-  const { isAuthenticated } = useAuth0();
+  const { isAuthenticated, isLoading } = useAuth0();
   
-  if (isAuthenticated) {
+  if (isLoading){
+    return (
+      <Container className="account-container top-spacer">
+      <Spinner animation="border" role="status"/>
+      <span className="sr-only">Loading...</span>
+      </Container>
+    );
+  } else if (isAuthenticated) {
     return (
       <Container className="account-container top-spacer">
         <div className="profile-info">
