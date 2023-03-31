@@ -29,12 +29,11 @@ const APICall = (props) => {
       const accessToken = await getAccessTokenSilently({
         audience: 'https://NoahCapstone'
       });
-      const response = await axios.delete(`http://127.0.0.1:5000${props.address}?id=${id}`, {
+      await axios.delete(`http://127.0.0.1:5000${props.address}?id=${id}`, {
         headers: {
           Authorization: `Bearer ${accessToken}`,
         }
       });
-      console.log(response);
     } catch (error) {
       alert("You do not have pernissions to delete this");
       console.error(error);
@@ -60,7 +59,7 @@ const APICall = (props) => {
         }
         setIsLoading(false);
       } catch (error) {
-        alert("You are not logged in!")
+        alert("You are not logged in, or do not have permission to view this information.")
         setIsLoading(false);
         console.error(error);
       }

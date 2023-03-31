@@ -24,11 +24,11 @@ function EditActor() {
             Authorization: `Bearer ${accessToken}`
           }
         });
-        console.log(response)
         setName(response.data.actor.name);
         setGender(response.data.actor.gender);
         setAge(response.data.actor.age);
       } catch (error) {
+        alert("You do not have permission to view actors.");
         console.error(error);
       }
     };
@@ -42,7 +42,7 @@ function EditActor() {
       const accessToken = await getAccessTokenSilently({
         audience: 'https://NoahCapstone'
       });
-      const response = await axios.patch(`http://localhost:5000/actors`, {
+      await axios.patch(`http://localhost:5000/actors`, {
         id,
         name,
         gender,
@@ -52,9 +52,9 @@ function EditActor() {
           Authorization: `Bearer ${accessToken}`
         }
       });
-      console.log(response);
       navigate('/actors');
     } catch (error) {
+      alert("You do not have access to Edit Actors.");
       console.error(error);
     }
   };

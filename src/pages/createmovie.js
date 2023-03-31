@@ -24,7 +24,7 @@ function CreateMovie() {
       const accessToken = await getAccessTokenSilently({
         audience: 'https://NoahCapstone'
       });
-      const response = await axios.post(`http://127.0.0.1:5000/movies`, {
+      await axios.post(`http://127.0.0.1:5000/movies`, {
         title: title,
         release_date: releaseDate,
       }, {
@@ -32,7 +32,6 @@ function CreateMovie() {
           Authorization: `Bearer ${accessToken}`,
         }
       });
-      console.log(response);
       navigate('/movies');
     } catch (error) {
       alert("You do not have pernissions to create movies");

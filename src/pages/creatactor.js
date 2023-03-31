@@ -20,7 +20,7 @@ function CreateActor() {
         audience: 'https://NoahCapstone'
       });
 
-      const response = await axios.post('http://localhost:5000/actors', {
+      await axios.post('http://localhost:5000/actors', {
         name,
         gender,
         age
@@ -29,7 +29,6 @@ function CreateActor() {
           Authorization: `Bearer ${accessToken}`
         }
       });
-      console.log(response);
       navigate('/actors');
     } catch (error) {
       alert("You do not have pernissions to add actors");

@@ -23,10 +23,10 @@ function CreateMovie() {
             Authorization: `Bearer ${accessToken}`
           }
         });
-        console.log(response)
         setTitle(response.data.movie.title);
         setReleaseDate(response.data.movie.release_date);
       } catch (error) {
+        alert("You do not have permission to view movies.");
         console.error(error);
       }
     };
@@ -47,7 +47,7 @@ function CreateMovie() {
       const accessToken = await getAccessTokenSilently({
         audience: 'https://NoahCapstone'
       });
-      const response = await axios.patch(`http://localhost:5000/movies`, {
+      await axios.patch(`http://localhost:5000/movies`, {
         id,
         title,
         release_date: releaseDate
@@ -56,9 +56,9 @@ function CreateMovie() {
           Authorization: `Bearer ${accessToken}`
         }
       });
-      console.log(response);
       navigate('/movies');
     } catch (error) {
+      alert("You do not have access to Edit Movies.");
       console.error(error);
     }
   };
