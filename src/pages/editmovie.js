@@ -43,6 +43,12 @@ function CreateMovie() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+
+    if (!title || !releaseDate) {
+      alert('Please fill in all fields');
+      return;
+    }
+
     try {
       const accessToken = await getAccessTokenSilently({
         audience: 'https://NoahCapstone'
