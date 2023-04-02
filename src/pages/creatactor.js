@@ -15,6 +15,11 @@ function CreateActor() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    if (!name || !gender || !age) {
+      alert('Please fill in all fields');
+      return;
+    }
+
     try {
       const accessToken = await getAccessTokenSilently({
         audience: 'https://NoahCapstone'
